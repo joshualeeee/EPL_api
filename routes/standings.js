@@ -14,13 +14,12 @@ router.get('/', (req, res, next) => {
     const season = req.query.season;
     const searchTeam = req.query.searchTeam;
     const ordering = req.query.ordering;
-    const minWins = req.query['wins[gte]'];
-    const maxWins = req.query['wins[lte]'];
-    const minLoss = req.query['loss[gte]'];
-    const maxLoss = req.query['loss[lte]'];
-    const minPos = req.query['pos[gte]'];
-    const maxPos = req.query['pos[lte]'];
-
+    const minWins = req.query.wins_gte;
+    const maxWins = req.query.wins_lte;
+    const minLoss = req.query.loss_gte;
+    const maxLoss = req.query.loss_lte;
+    const minPos = req.query.pos_gte;
+    const maxPos = req.query.pos_lte;
 
     let query = 'SELECT * FROM epl_standings';
 
@@ -41,10 +40,6 @@ router.get('/', (req, res, next) => {
         }
         queryConditions.push('Team LIKE ?');
         conditions.push(`%${searchTeam}%`);
-    }
-
-    if (conditions.length > 0) {
-        query += ' WHERE ' + queryConditions.join(' AND ');
     }
 
     if (minWins) {
@@ -105,6 +100,10 @@ router.get('/', (req, res, next) => {
         } catch (err) {
             return res.status(400).json({ error: err.message });
         }
+    }
+
+    if (conditions.length > 0) {
+        query += ' WHERE ' + queryConditions.join(' AND ');
     }
 
 
