@@ -1,0 +1,16 @@
+name: EPL API Tests
+
+on:
+  pull_reqeust:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults: 
+      run:
+        working-directory: ./
+
+    strategy:
+      
