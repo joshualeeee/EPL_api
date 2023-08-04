@@ -4,20 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --detectOpenHandles",
+    "deploy": "serverless deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-amplify/cli": "^12.2.3",
     "chai": "^4.3.7",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mocha": "^10.2.0",
     "mysql2": "^3.4.1",
     "nodemon": "^2.0.22",
-    "sinon": "^15.2.0",
+    "sinon": "^15.2.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2",
     "supertest": "^6.3.3"
   }
 }
