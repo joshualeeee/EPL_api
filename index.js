@@ -20,13 +20,15 @@ const server = app.listen(3000, () => {
 });
 
 function closeServer(done) {
-  server.close(() => {
-    connection.end((err) => {
-      if (err) console.error("Error closing MySQL connection:", err);
-      else console.log("MySQL connection closed.");
+  connection.end((err) => {
+    if (err) console.error("Error closing MySQL connection:", err);
+    else console.log("MySQL connection closed.");
+
+    server.close(() => {
+      console.log("Server closed.");
       done();
     });
-    });
+  });
 }
 
 module.exports = {app, closeServer};
