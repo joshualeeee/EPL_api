@@ -122,8 +122,6 @@ router.get('/', (req, res, next) => {
         }
     }
     
-    console.log(query);
-
     connection.query(query, conditions, (err, result) => {
         if(!err){
             if (result.length === 0) {

@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("./index"); // Replace "./app" with the path to your main app file
+const app = require("./index"); 
 
 describe("GET /standings", () => {
   it("should return 200 with valid query parameters", (done) => {
@@ -13,7 +13,6 @@ describe("GET /standings", () => {
         if (err) return done(err);
         const standings = res.body;
         standings.forEach((standing) => {
-          // Assert that each standing has the correct season
           if (standing.Season !== "2013-14") {
             throw new Error(`Invalid season in response: ${standing.Season}`);
           }
