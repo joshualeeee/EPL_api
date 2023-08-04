@@ -1,6 +1,6 @@
 const request = require("supertest");
 const { app, closeServer } = require("./index");
-
+//test
 describe("GET /standings", () => {
   it("should return 200 with valid query parameters", (done) => {
     request(app)
