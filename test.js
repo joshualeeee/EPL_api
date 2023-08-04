@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("./index"); 
+const { app, closeServer } = require("./index");
 
 describe("GET /standings", () => {
   it("should return 200 with valid query parameters", (done) => {
@@ -55,5 +55,9 @@ describe("GET /standings", () => {
         ordering: "invalid-ordering",
       })
       .expect(400, done);
+  });
+
+  afterAll((done) => {
+    closeServer(done);
   });
 });
